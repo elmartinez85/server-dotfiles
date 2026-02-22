@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-22)
 
 **Core value:** One command turns a bare Ubuntu/RPi server into a fully-configured, familiar environment — no manual steps.
-**Current focus:** Phase 2 - Shell Environment and Config Deployment
+**Current focus:** Phase 3 - CLI Tools and Docker
 
 ## Current Position
 
-Phase: 2 of 4 (Shell Environment and Config Deployment)
-Plan: 2 of 3 in current phase
+Phase: 3 of 4 (CLI Tools and Docker)
+Plan: 1 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-22 — Completed 02-02 (install-shell.sh with six installer functions + bootstrap.sh Phase 2 wiring)
+Last activity: 2026-02-22 — Completed 03-01 (lib/versions.sh canonical version store + install-gitleaks.sh updated to source it)
 
-Progress: [██████░░░░] 42%
+Progress: [███████░░░] 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 1.8 min
-- Total execution time: 0.12 hours
+- Total plans completed: 5
+- Average duration: 1.6 min
+- Total execution time: 0.13 hours
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [██████░░░░] 42%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 4 min | 1.3 min |
 | 02-shell-environment-and-config-deployment | 2 | 8 min | 4 min |
+| 03-cli-tools-and-docker | 1 | 1 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min), 02-01 (5 min), 02-02 (3 min)
+- Last 5 plans: 01-02 (1 min), 01-03 (1 min), 02-01 (5 min), 02-02 (3 min), 03-01 (1 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -40,6 +41,7 @@ Progress: [██████░░░░] 42%
 | Phase 01-foundation P03 | 1 | 2 tasks | 2 files |
 | Phase 02-shell P01 | 2 | 2 tasks | 4 files |
 | Phase 02-shell P02 | 3 | 2 tasks | 2 files |
+| Phase 03-cli P01 | 1 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -73,6 +75,9 @@ Recent decisions affecting current work:
 - [02-02]: KEEP_ZSHRC=yes passed to oh-my-zsh installer — prevents installer from overwriting .zshrc before deploy_dotfiles creates the symlink
 - [02-02]: install order is zsh -> oh-my-zsh -> plugins -> starship -> tmux -> deploy_dotfiles — oh-my-zsh must precede plugin clones
 - [02-02]: starship.toml symlink target is ~/.config/starship.toml — mkdir -p ~/.config required on minimal servers
+- [03-01]: lib/versions.sh variables NOT exported — sourcing scripts assign as globals/locals as needed (matches existing lib/ convention)
+- [03-01]: GITLEAKS_INSTALL_PATH kept as module-level var in install-gitleaks.sh — only GITLEAKS_VERSION was removed (path is not a version concern)
+- [03-01]: lib/versions.sh idempotency guard pattern (_LIB_VERSIONS_LOADED) matches lib/log.sh and lib/os.sh convention
 
 ### Pending Todos
 
@@ -80,13 +85,13 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 3]: Verify delta arm64 binary stability at target pinned version before committing version number
-- [Phase 3]: Confirm neovim ARM64 install method — tarball (nvim-linux-arm64.tar.gz) recommended over AppImage to avoid FUSE dependency on headless servers
+- [Phase 3]: delta 0.18.2 aarch64-unknown-linux-gnu.tar.gz confirmed present on GitHub Releases (low risk for Bookworm glibc 2.35+)
+- [Phase 3 RESOLVED]: Neovim ARM64 install method confirmed — use tarball (nvim-linux-arm64.tar.gz), not AppImage (avoids FUSE dependency)
 - [Phase 4]: Confirm sshd service name on RPi OS Bookworm — may be `ssh` not `sshd`
 - [Phase 4]: Verify UFW sequence on Ubuntu 24.04 fresh install
 
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 02-02-PLAN.md (install-shell.sh with six installer functions + bootstrap.sh Phase 2 wiring)
+Stopped at: Completed 03-01-PLAN.md (lib/versions.sh canonical version store + install-gitleaks.sh sourcing it)
 Resume file: None

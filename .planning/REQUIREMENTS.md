@@ -57,7 +57,7 @@
 
 ### Maintenance
 
-- [ ] **MAINT-01**: Tool versions centralized in a `versions.sh` file (single place to update all pinned versions)
+- [x] **MAINT-01**: Tool versions centralized in a `versions.sh` file (single place to update all pinned versions)
 - [ ] **MAINT-02**: Renovate Bot configured to open automated PRs when new GitHub Release versions are available for pinned tools
 
 ## v2 Requirements
@@ -124,7 +124,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEC-04 | Phase 4 | Pending |
 | SEC-05 | Phase 4 | Pending |
 | SEC-06 | Phase 4 | Pending |
-| MAINT-01 | Phase 4 | Pending |
+| MAINT-01 | Phase 4 | Complete |
 | MAINT-02 | Phase 4 | Pending |
 
 **Coverage:**

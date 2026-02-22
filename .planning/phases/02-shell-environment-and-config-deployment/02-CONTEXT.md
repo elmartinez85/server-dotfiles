@@ -31,7 +31,7 @@ are Linux-only — no macOS conditionals or cross-platform compatibility require
 ### Idempotency and re-run behavior
 - **Symlinks already exist (correct)**: skip with a log message — no re-linking
 - **Backup collision** (`~/.dotfiles.bak/` already has the file): timestamp the new backup (e.g., `.zshrc.2026-02-22`) so nothing is ever lost
-- **oh-my-zsh already installed** (`~/.oh-my-zsh` exists): re-run the official install script anyway — it handles existing installs gracefully
+- **oh-my-zsh already installed** (`~/.oh-my-zsh` exists): skip the installer — the official oh-my-zsh installer exits with error code 1 when `~/.oh-my-zsh` already exists (it does NOT handle existing installs gracefully)
 - **starship already installed** (binary exists): re-run the official install script anyway — idempotent by design
 
 ### Claude's Discretion

@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-22)
 ## Current Position
 
 Phase: 2 of 4 (Shell Environment and Config Deployment)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-22 — Completed 02-01 (dotfiles: .zshrc, .zsh_aliases, .tmux.conf, starship.toml)
+Last activity: 2026-02-22 — Completed 02-02 (install-shell.sh with six installer functions + bootstrap.sh Phase 2 wiring)
 
-Progress: [█████░░░░░] 33%
+Progress: [██████░░░░] 42%
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [█████░░░░░] 33%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 4 min | 1.3 min |
-| 02-shell-environment-and-config-deployment | 1 | 5 min | 5 min |
+| 02-shell-environment-and-config-deployment | 2 | 8 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min), 02-01 (5 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min), 02-01 (5 min), 02-02 (3 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -39,6 +39,7 @@ Progress: [█████░░░░░] 33%
 | Phase 01-foundation P02 | 1 | 1 task | 1 file |
 | Phase 01-foundation P03 | 1 | 2 tasks | 2 files |
 | Phase 02-shell P01 | 2 | 2 tasks | 4 files |
+| Phase 02-shell P02 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -67,6 +68,11 @@ Recent decisions affecting current work:
 - [02-01]: ssh_only = false in starship.toml — always show hostname on servers, not just over SSH
 - [02-01]: .zsh_aliases references Phase 3 binaries (eza, bat, rg) — safe, zsh resolves at invocation time not source time
 - [02-01]: Plain "git:" text used for git_branch symbol — no Nerd Font required on headless servers
+- [02-02]: oh-my-zsh install uses directory pre-check guard (! -d ~/.oh-my-zsh) — official installer exits 1 if dir exists; locked decision to re-run is incorrect
+- [02-02]: usermod -s used for shell change (not chsh) — chsh has PAM issues on RPi OS Bookworm when run from root scripts
+- [02-02]: KEEP_ZSHRC=yes passed to oh-my-zsh installer — prevents installer from overwriting .zshrc before deploy_dotfiles creates the symlink
+- [02-02]: install order is zsh -> oh-my-zsh -> plugins -> starship -> tmux -> deploy_dotfiles — oh-my-zsh must precede plugin clones
+- [02-02]: starship.toml symlink target is ~/.config/starship.toml — mkdir -p ~/.config required on minimal servers
 
 ### Pending Todos
 
@@ -82,5 +88,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 02-01-PLAN.md (dotfiles: .zshrc, .zsh_aliases, .tmux.conf, starship.toml)
+Stopped at: Completed 02-02-PLAN.md (install-shell.sh with six installer functions + bootstrap.sh Phase 2 wiring)
 Resume file: None

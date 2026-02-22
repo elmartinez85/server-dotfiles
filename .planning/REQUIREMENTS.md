@@ -14,12 +14,12 @@
 
 ### Shell Environment
 
-- [ ] **SHELL-01**: User has zsh installed and set as the default shell after bootstrap
-- [ ] **SHELL-02**: User has oh-my-zsh installed via unattended install (no interactive prompts)
-- [ ] **SHELL-03**: User has starship prompt installed and active in zsh
-- [ ] **SHELL-04**: User has tmux installed
-- [ ] **SHELL-05**: User has zsh-autosuggestions plugin active
-- [ ] **SHELL-06**: User has zsh-syntax-highlighting plugin active
+- [x] **SHELL-01**: User has zsh installed and set as the default shell after bootstrap
+- [x] **SHELL-02**: User has oh-my-zsh installed via unattended install (no interactive prompts)
+- [x] **SHELL-03**: User has starship prompt installed and active in zsh
+- [x] **SHELL-04**: User has tmux installed
+- [x] **SHELL-05**: User has zsh-autosuggestions plugin active
+- [x] **SHELL-06**: User has zsh-syntax-highlighting plugin active
 
 ### Config Deployment
 
@@ -96,12 +96,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BOOT-02 | Phase 1 | Complete |
 | BOOT-03 | Phase 1 | Complete |
 | BOOT-04 | Phase 1 | Complete |
-| SHELL-01 | Phase 2 | Pending |
-| SHELL-02 | Phase 2 | Pending |
-| SHELL-03 | Phase 2 | Pending |
-| SHELL-04 | Phase 2 | Pending |
-| SHELL-05 | Phase 2 | Pending |
-| SHELL-06 | Phase 2 | Pending |
+| SHELL-01 | Phase 2 | Complete |
+| SHELL-02 | Phase 2 | Complete |
+| SHELL-03 | Phase 2 | Complete |
+| SHELL-04 | Phase 2 | Complete |
+| SHELL-05 | Phase 2 | Complete |
+| SHELL-06 | Phase 2 | Complete |
 | CONF-01 | Phase 2 | Complete |
 | CONF-02 | Phase 2 | Complete |
 | CONF-03 | Phase 2 | Complete |

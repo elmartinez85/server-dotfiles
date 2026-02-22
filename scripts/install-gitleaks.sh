@@ -5,7 +5,10 @@
 if [[ -n "${_SCRIPT_INSTALL_GITLEAKS_LOADED:-}" ]]; then return 0; fi
 _SCRIPT_INSTALL_GITLEAKS_LOADED=1
 
-GITLEAKS_VERSION="8.30.0"
+# Source canonical version store — provides GITLEAKS_VERSION
+# shellcheck source=lib/versions.sh
+source "${DOTFILES_DIR}/lib/versions.sh"
+
 GITLEAKS_INSTALL_PATH="/usr/local/bin/gitleaks"
 
 install_gitleaks() {

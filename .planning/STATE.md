@@ -5,38 +5,40 @@
 See: .planning/PROJECT.md (updated 2026-02-22)
 
 **Core value:** One command turns a bare Ubuntu/RPi server into a fully-configured, familiar environment — no manual steps.
-**Current focus:** Phase 1 - Foundation
+**Current focus:** Phase 2 - Shell Environment and Config Deployment
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-22 — Completed 01-03 (gitleaks secret prevention hooks and installer)
+Phase: 2 of 4 (Shell Environment and Config Deployment)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-22 — Completed 02-01 (dotfiles: .zshrc, .zsh_aliases, .tmux.conf, starship.toml)
 
-Progress: [███░░░░░░░] 25%
+Progress: [█████░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 1.3 min
-- Total execution time: 0.05 hours
+- Total plans completed: 4
+- Average duration: 1.8 min
+- Total execution time: 0.12 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 4 min | 1.3 min |
+| 02-shell-environment-and-config-deployment | 1 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min), 02-01 (5 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 2 | 2 tasks | 6 files |
 | Phase 01-foundation P02 | 1 | 1 task | 1 file |
 | Phase 01-foundation P03 | 1 | 2 tasks | 2 files |
+| Phase 02-shell P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -59,6 +61,12 @@ Recent decisions affecting current work:
 - [01-03]: gitleaks git --source used for history scan (not deprecated gitleaks detect)
 - [01-03]: trap RETURN pattern used inside install_gitleaks() for tmpdir cleanup
 - [01-03]: diff -q used for hook idempotency — ensures outdated hooks get updated on re-run
+- [02-01]: ZSH_THEME must be empty string — named theme causes dual-prompt conflict with starship
+- [02-01]: eval "$(starship init zsh)" must be the last executable line — oh-my-zsh resets $PROMPT if placed before source oh-my-zsh.sh
+- [02-01]: Double quotes required around $(starship init zsh) since starship v1.17.0
+- [02-01]: ssh_only = false in starship.toml — always show hostname on servers, not just over SSH
+- [02-01]: .zsh_aliases references Phase 3 binaries (eza, bat, rg) — safe, zsh resolves at invocation time not source time
+- [02-01]: Plain "git:" text used for git_branch symbol — no Nerd Font required on headless servers
 
 ### Pending Todos
 
@@ -74,5 +82,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 01-03-PLAN.md (gitleaks secret prevention hooks and installer)
+Stopped at: Completed 02-01-PLAN.md (dotfiles: .zshrc, .zsh_aliases, .tmux.conf, starship.toml)
 Resume file: None

@@ -23,11 +23,11 @@
 
 ### Config Deployment
 
-- [ ] **CONF-01**: zsh config (.zshrc and aliases) deployed to $HOME via symlinks from repo
-- [ ] **CONF-02**: tmux config (.tmux.conf) deployed to $HOME via symlinks from repo
-- [ ] **CONF-03**: starship config (starship.toml) deployed to $HOME/.config via symlinks from repo
-- [ ] **CONF-04**: Pre-existing config files backed up to ~/.dotfiles.bak/ before symlinks are created
-- [ ] **CONF-05**: zsh config on servers provides a similar shell experience to macOS (same aliases, same tools, same feel — not required to run verbatim on macOS)
+- [x] **CONF-01**: zsh config (.zshrc and aliases) deployed to $HOME via symlinks from repo
+- [x] **CONF-02**: tmux config (.tmux.conf) deployed to $HOME via symlinks from repo
+- [x] **CONF-03**: starship config (starship.toml) deployed to $HOME/.config via symlinks from repo
+- [x] **CONF-04**: Pre-existing config files backed up to ~/.dotfiles.bak/ before symlinks are created
+- [x] **CONF-05**: zsh config on servers provides a similar shell experience to macOS (same aliases, same tools, same feel — not required to run verbatim on macOS)
 
 ### CLI Tools
 
@@ -102,11 +102,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SHELL-04 | Phase 2 | Pending |
 | SHELL-05 | Phase 2 | Pending |
 | SHELL-06 | Phase 2 | Pending |
-| CONF-01 | Phase 2 | Pending |
-| CONF-02 | Phase 2 | Pending |
-| CONF-03 | Phase 2 | Pending |
-| CONF-04 | Phase 2 | Pending |
-| CONF-05 | Phase 2 | Pending |
+| CONF-01 | Phase 2 | Complete |
+| CONF-02 | Phase 2 | Complete |
+| CONF-03 | Phase 2 | Complete |
+| CONF-04 | Phase 2 | Complete |
+| CONF-05 | Phase 2 | Complete |
 | TOOL-01 | Phase 3 | Pending |
 | TOOL-02 | Phase 3 | Pending |
 | TOOL-03 | Phase 3 | Pending |

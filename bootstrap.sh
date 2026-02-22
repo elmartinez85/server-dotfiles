@@ -138,8 +138,23 @@ install_gitleaks
 install_pre_commit_hook
 scan_git_history
 
-# Future phases will be added here as they are implemented:
-# Phase 2: Shell environment (source scripts/install-shell.sh)
+# Phase 2: Shell environment and config deployment
+# Ordering rationale — dependency order is mandatory:
+#   1. install_zsh        — install zsh + set default shell (foundation for all below)
+#   2. install_ohmyzsh    — install oh-my-zsh framework (plugins clone into its custom dir)
+#   3. install_zsh_plugins — clone zsh-autosuggestions + zsh-syntax-highlighting into oh-my-zsh/custom/plugins/
+#   4. install_starship   — install starship binary (independent; placed after plugins for logical grouping)
+#   5. install_tmux       — install tmux package (fully independent)
+#   6. deploy_dotfiles    — create symlinks last (dotfiles reference all the above)
+# shellcheck source=scripts/install-shell.sh
+source "${DOTFILES_DIR}/scripts/install-shell.sh"
+install_zsh
+install_ohmyzsh
+install_zsh_plugins
+install_starship
+install_tmux
+deploy_dotfiles
+
 # Phase 3: CLI tools and Docker (source scripts/install-tools.sh)
 # Phase 4: Security hardening (source scripts/install-security.sh)
 

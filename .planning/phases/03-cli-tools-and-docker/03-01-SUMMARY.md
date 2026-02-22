@@ -100,5 +100,14 @@ None - no external service configuration required.
 - No blockers for the next plan
 
 ---
+## Self-Check: PASSED
+
+- FOUND: lib/versions.sh
+- FOUND: scripts/install-gitleaks.sh
+- FOUND: .planning/phases/03-cli-tools-and-docker/03-01-SUMMARY.md
+- FOUND commit: 18c0ef1 (feat: lib/versions.sh)
+- FOUND commit: 9f05142 (feat: install-gitleaks.sh update)
+
+---
 *Phase: 03-cli-tools-and-docker*
 *Completed: 2026-02-22*

@@ -22,7 +22,7 @@ Install seven modern CLI tools (rg, fd, fzf, eza, bat, delta, nvim) and Docker E
 ### Binary install method
 - All seven CLI tools installed from GitHub Releases (direct binary download) — consistent approach, no apt dependency, reproducible across distros
 - Binaries land in `/usr/local/bin` (system-wide, all users)
-- nvim installed as AppImage — single self-contained file, symlinked to `/usr/local/bin/nvim`
+- nvim installed from tarball (`nvim-linux-{arch}.tar.gz`) — binary extracted from `nvim-linux-{arch}/bin/nvim` and installed to `/usr/local/bin/nvim`. AppImage was considered but rejected: AppImage requires FUSE (`libfuse2`) which is not available on all headless servers and adds an unreliable runtime dependency. Tarball has no runtime deps beyond glibc.
 - Docker install method: Claude's discretion (use the most appropriate method for idempotent, reproducible server setup)
 
 ### Installer organization
@@ -46,7 +46,7 @@ Install seven modern CLI tools (rg, fd, fzf, eza, bat, delta, nvim) and Docker E
 ### Claude's Discretion
 - Docker install method (official apt repo vs convenience script — pick what's most idempotent and secure)
 - Failure handling strategy for individual tool install failures
-- Exact AppImage mount/symlink approach for nvim
+- nvim tarball extraction details (subdirectory path already specified in Binary install method decision above)
 
 </decisions>
 

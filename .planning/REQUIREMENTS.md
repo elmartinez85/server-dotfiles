@@ -27,7 +27,7 @@
 - [ ] **CONF-02**: tmux config (.tmux.conf) deployed to $HOME via symlinks from repo
 - [ ] **CONF-03**: starship config (starship.toml) deployed to $HOME/.config via symlinks from repo
 - [ ] **CONF-04**: Pre-existing config files backed up to ~/.dotfiles.bak/ before symlinks are created
-- [ ] **CONF-05**: zsh config handles macOS/Linux differences without forking the file (platform-conditional sourcing)
+- [ ] **CONF-05**: zsh config on servers provides a similar shell experience to macOS (same aliases, same tools, same feel — not required to run verbatim on macOS)
 
 ### CLI Tools
 
@@ -92,46 +92,46 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BOOT-01 | — | Pending |
-| BOOT-02 | — | Pending |
-| BOOT-03 | — | Pending |
-| BOOT-04 | — | Pending |
-| SHELL-01 | — | Pending |
-| SHELL-02 | — | Pending |
-| SHELL-03 | — | Pending |
-| SHELL-04 | — | Pending |
-| SHELL-05 | — | Pending |
-| SHELL-06 | — | Pending |
-| CONF-01 | — | Pending |
-| CONF-02 | — | Pending |
-| CONF-03 | — | Pending |
-| CONF-04 | — | Pending |
-| CONF-05 | — | Pending |
-| TOOL-01 | — | Pending |
-| TOOL-02 | — | Pending |
-| TOOL-03 | — | Pending |
-| TOOL-04 | — | Pending |
-| TOOL-05 | — | Pending |
-| TOOL-06 | — | Pending |
-| TOOL-07 | — | Pending |
-| DOCK-01 | — | Pending |
-| DOCK-02 | — | Pending |
-| DOCK-03 | — | Pending |
-| DOCK-04 | — | Pending |
-| SEC-01 | — | Pending |
-| SEC-02 | — | Pending |
-| SEC-03 | — | Pending |
-| SEC-04 | — | Pending |
-| SEC-05 | — | Pending |
-| SEC-06 | — | Pending |
-| MAINT-01 | — | Pending |
-| MAINT-02 | — | Pending |
+| BOOT-01 | Phase 1 | Pending |
+| BOOT-02 | Phase 1 | Pending |
+| BOOT-03 | Phase 1 | Pending |
+| BOOT-04 | Phase 1 | Pending |
+| SHELL-01 | Phase 2 | Pending |
+| SHELL-02 | Phase 2 | Pending |
+| SHELL-03 | Phase 2 | Pending |
+| SHELL-04 | Phase 2 | Pending |
+| SHELL-05 | Phase 2 | Pending |
+| SHELL-06 | Phase 2 | Pending |
+| CONF-01 | Phase 2 | Pending |
+| CONF-02 | Phase 2 | Pending |
+| CONF-03 | Phase 2 | Pending |
+| CONF-04 | Phase 2 | Pending |
+| CONF-05 | Phase 2 | Pending |
+| TOOL-01 | Phase 3 | Pending |
+| TOOL-02 | Phase 3 | Pending |
+| TOOL-03 | Phase 3 | Pending |
+| TOOL-04 | Phase 3 | Pending |
+| TOOL-05 | Phase 3 | Pending |
+| TOOL-06 | Phase 3 | Pending |
+| TOOL-07 | Phase 3 | Pending |
+| DOCK-01 | Phase 3 | Pending |
+| DOCK-02 | Phase 3 | Pending |
+| DOCK-03 | Phase 3 | Pending |
+| DOCK-04 | Phase 3 | Pending |
+| SEC-01 | Phase 4 | Pending |
+| SEC-02 | Phase 4 | Pending |
+| SEC-03 | Phase 4 | Pending |
+| SEC-04 | Phase 4 | Pending |
+| SEC-05 | Phase 4 | Pending |
+| SEC-06 | Phase 4 | Pending |
+| MAINT-01 | Phase 4 | Pending |
+| MAINT-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 ⚠️ (populated during roadmap creation)
+- Mapped to phases: 32
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-22*
-*Last updated: 2026-02-22 after initial definition*
+*Last updated: 2026-02-22 after roadmap creation*

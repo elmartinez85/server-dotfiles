@@ -45,7 +45,11 @@ Plans:
   3. Config files (.zshrc, aliases, .tmux.conf, starship.toml) exist in $HOME as symlinks pointing into the cloned repo
   4. Pre-existing config files are preserved in ~/.dotfiles.bak/ rather than overwritten
   5. The server shell feels similar to macOS (same aliases, same tools, same prompt) — not required to run the same .zshrc verbatim on macOS
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Dotfiles content (dotfiles/.zshrc, .zsh_aliases, .tmux.conf, starship.toml)
+- [ ] 02-02-PLAN.md — Shell stack installer (scripts/install-shell.sh) and bootstrap.sh wiring
 
 ### Phase 3: CLI Tools and Docker
 **Goal**: All seven modern CLI tools are installed with correct binary names and Docker is running with the bootstrap user able to execute container commands without sudo

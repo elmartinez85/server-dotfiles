@@ -1,0 +1,46 @@
+# starship.toml — managed by server-dotfiles
+# Minimal starship prompt config for headless Linux servers.
+# No Nerd Font symbols — uses plain ASCII/text to work without font patching.
+# Deployed as a symlink to $HOME/.config/starship.toml.
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ---------------------------------------------------------------------------
+# Hostname — always visible (not SSH-only), critical for server awareness
+# ---------------------------------------------------------------------------
+
+[hostname]
+ssh_only = false
+style = "bold green"
+format = "[$hostname]($style) "
+
+# ---------------------------------------------------------------------------
+# Username — always shown
+# ---------------------------------------------------------------------------
+
+[username]
+show_always = true
+style_user = "bold blue"
+format = "[$user]($style)@"
+
+# ---------------------------------------------------------------------------
+# Directory
+# ---------------------------------------------------------------------------
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+# ---------------------------------------------------------------------------
+# Git branch — plain text symbol (no Nerd Font required)
+# ---------------------------------------------------------------------------
+
+[git_branch]
+symbol = "git:"
+
+# ---------------------------------------------------------------------------
+# Git status — keep defaults (no Nerd Font-only symbols in defaults)
+# ---------------------------------------------------------------------------
+
+[git_status]
+# Uses default symbols which are plain ASCII: !, +, ?, etc.

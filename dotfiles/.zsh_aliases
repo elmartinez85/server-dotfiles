@@ -1,0 +1,59 @@
+# .zsh_aliases — managed by server-dotfiles
+# Sourced by .zshrc at shell startup. Provides a macOS-like feel on Linux servers.
+# Aliases for eza, bat, and rg are defined here; those binaries are installed
+# in Phase 3. They resolve at invocation time, not at shell startup.
+
+# ---------------------------------------------------------------------------
+# Navigation
+# ---------------------------------------------------------------------------
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# ---------------------------------------------------------------------------
+# Directory listing (eza — installed in Phase 3)
+# ---------------------------------------------------------------------------
+
+alias ls='eza'
+alias ll='eza -lh'
+alias la='eza -lah'
+alias lt='eza --tree'
+
+# ---------------------------------------------------------------------------
+# File viewing (bat — installed in Phase 3)
+# ---------------------------------------------------------------------------
+
+alias cat='bat --pager=never'
+
+# ---------------------------------------------------------------------------
+# Search (ripgrep — installed in Phase 3)
+# ---------------------------------------------------------------------------
+
+alias grep='rg'
+
+# ---------------------------------------------------------------------------
+# Git shortcuts
+# ---------------------------------------------------------------------------
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias gd='git diff'
+
+# ---------------------------------------------------------------------------
+# General
+# ---------------------------------------------------------------------------
+
+alias c='clear'
+alias h='history'
+alias reload='exec zsh'
+
+# ---------------------------------------------------------------------------
+# Docker (Phase 3 readiness)
+# ---------------------------------------------------------------------------
+
+alias d='docker'
+alias dc='docker compose'

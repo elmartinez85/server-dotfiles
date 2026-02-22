@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# hooks/pre-commit
+# Source-controlled gitleaks pre-commit hook.
+# Installed to .git/hooks/pre-commit by bootstrap.sh (scripts/install-gitleaks.sh).
+#
+# Deprecation note: gitleaks protect --staged is deprecated/hidden since v8.19.0
+# but confirmed functional as of v8.30.0. Pinned version controls surprises.
+# For history scanning, use `gitleaks git` (the modern replacement for `gitleaks detect`).
+
+set -euo pipefail
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "ERROR: gitleaks not found in PATH." >&2
+  echo "Run bootstrap.sh to install it: sudo bash ~/.dotfiles/bootstrap.sh" >&2
+  exit 1
+fi
+
+echo "==> [gitleaks] Scanning staged changes for secrets..."
+
+if ! gitleaks protect --staged --redact; then
+  echo "" >&2
+  echo "ERROR: Secret(s) detected in staged changes. Commit blocked." >&2
+  echo "Review the gitleaks report above (file, line, matched rule)." >&2
+  echo "Remove the secret, then re-stage and commit." >&2
+  exit 1
+fi
+
+echo "==> [gitleaks] No secrets detected — commit allowed."

@@ -28,7 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Running the bootstrap script a second time on the same server completes without side effects or failures
   3. The bootstrap script correctly detects x86_64 and ARM64 architectures and exports the appropriate variables
   4. Attempting to commit a file containing a secret causes the pre-commit hook to block the commit
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Repo skeleton and shared bash libraries (lib/log.sh, lib/os.sh, lib/pkg.sh)
+- [ ] 01-02-PLAN.md — bootstrap.sh entrypoint (curl | bash, idempotent, arch detection, cleanup, dry-run)
+- [ ] 01-03-PLAN.md — gitleaks installer and pre-commit hook (secret prevention)
 
 ### Phase 2: Shell Environment and Config Deployment
 **Goal**: After bootstrap, the server has zsh as the default shell with oh-my-zsh, starship, tmux, and all plugins active, and all config files deployed as symlinks from the repo
@@ -72,7 +77,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. Shell Environment and Config Deployment | 0/TBD | Not started | - |
 | 3. CLI Tools and Docker | 0/TBD | Not started | - |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

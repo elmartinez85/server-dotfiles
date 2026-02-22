@@ -60,7 +60,13 @@ Plans:
   2. `docker run hello-world` succeeds without sudo as the bootstrap user
   3. `docker compose version` returns a version string
   4. `lazydocker` launches and shows the container management UI
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — lib/versions.sh (canonical version store) + update install-gitleaks.sh to source it
+- [ ] 03-02-PLAN.md — scripts/install-tools.sh (seven CLI tool installer functions)
+- [ ] 03-03-PLAN.md — scripts/install-docker.sh (Docker Engine + Compose + lazydocker)
+- [ ] 03-04-PLAN.md — scripts/verify.sh (operator post-relogin checks) + bootstrap.sh Phase 3 wiring
 
 ### Phase 4: Security and Maintenance
 **Goal**: The server rejects all SSH password authentication attempts and brute-force attacks, the firewall enforces default-deny inbound policy, and pinned tool versions are tracked in a single file with automated update PRs
@@ -83,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-22 |
 | 2. Shell Environment and Config Deployment | 2/2 | Complete   | 2026-02-22 |
-| 3. CLI Tools and Docker | 0/TBD | Not started | - |
+| 3. CLI Tools and Docker | 0/4 | Not started | - |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

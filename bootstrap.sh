@@ -155,7 +155,29 @@ install_starship
 install_tmux
 deploy_dotfiles
 
-# Phase 3: CLI tools and Docker (source scripts/install-tools.sh)
+# Phase 3: CLI tools and Docker
+# Ordering rationale:
+#   1. install-tools.sh — seven CLI tools, each soft-failed via _try_install
+#      (one bad binary download does not abort the entire bootstrap)
+#   2. install-docker.sh — Docker Engine (hard-fail: required infrastructure),
+#      then lazydocker (soft-fail: optional TUI tool)
+# shellcheck source=scripts/install-tools.sh
+source "${DOTFILES_DIR}/scripts/install-tools.sh"
+_try_install install_ripgrep
+_try_install install_fd
+_try_install install_fzf
+_try_install install_eza
+_try_install install_bat
+_try_install install_delta
+_try_install install_nvim
+
+# shellcheck source=scripts/install-docker.sh
+source "${DOTFILES_DIR}/scripts/install-docker.sh"
+install_docker_engine
+verify_docker_running
+add_user_to_docker_group
+_try_install install_lazydocker
+
 # Phase 4: Security hardening (source scripts/install-security.sh)
 
 log_success "Bootstrap finished successfully."

@@ -1,0 +1,8 @@
+# Bootstrap runtime files
+.installed
+bootstrap.log
+
+# OS/editor artifacts
+.DS_Store
+*.swp
+*~

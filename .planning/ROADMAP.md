@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Repo skeleton, bootstrap entrypoint, shared lib functions, and secret prevention (completed 2026-02-22)
 - [x] **Phase 2: Shell Environment and Config Deployment** - zsh, oh-my-zsh, starship, tmux, plugins, and symlinked configs (completed 2026-02-22)
-- [ ] **Phase 3: CLI Tools and Docker** - Modern CLI tools from GitHub Releases and Docker Engine with Compose
+- [x] **Phase 3: CLI Tools and Docker** - Modern CLI tools from GitHub Releases and Docker Engine with Compose (completed 2026-02-22)
 - [ ] **Phase 4: Security and Maintenance** - SSH hardening, fail2ban, UFW firewall, and automated version updates
 
 ## Phase Details
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-22 |
 | 2. Shell Environment and Config Deployment | 2/2 | Complete   | 2026-02-22 |
-| 3. CLI Tools and Docker | 3/4 | In Progress|  |
+| 3. CLI Tools and Docker | 4/4 | Complete   | 2026-02-22 |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

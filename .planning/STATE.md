@@ -10,30 +10,31 @@ See: .planning/PROJECT.md (updated 2026-02-22)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-22 — Roadmap created
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-22 — Completed 01-01 (repo skeleton and shared bash libraries)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 8%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 2 min
+- Total execution time: 0.03 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: n/a
-- Trend: n/a
+- Last 5 plans: 01-01 (2 min)
+- Trend: establishing baseline
 
 *Updated after each plan completion*
+| Phase 01-foundation P01 | 2 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -45,6 +46,9 @@ Recent decisions affecting current work:
 - [Setup]: Pure bash + GNU Stow chosen over chezmoi/Ansible — zero bootstrapping dependency, simpler for single-user homelab
 - [Setup]: apt + direct GitHub Releases binary downloads chosen over Homebrew — inconsistent ARM support on RPi
 - [Setup]: Secrets via env vars at runtime only — public repo, zero secrets in version control
+- [01-01]: tee redirection belongs in bootstrap.sh entrypoint, not in log.sh — lib files only define functions
+- [01-01]: os_detect_arch normalizes both aarch64 (Linux) and arm64 (macOS) to canonical arm64 output
+- [01-01]: DRY_RUN support added to pkg_install via exported env var — no flag parsing in lib files
 
 ### Pending Todos
 
@@ -60,5 +64,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Roadmap created, ready to plan Phase 1
+Stopped at: Completed 01-01-PLAN.md (repo skeleton and shared bash libraries)
 Resume file: None

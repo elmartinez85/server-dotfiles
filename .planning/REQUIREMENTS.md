@@ -41,10 +41,10 @@
 
 ### Docker
 
-- [ ] **DOCK-01**: Docker Engine installed via official install script (handles x86_64 and ARM64)
-- [ ] **DOCK-02**: Docker Compose plugin installed and accessible as `docker compose`
-- [ ] **DOCK-03**: Bootstrap user added to docker group (docker commands run without sudo)
-- [ ] **DOCK-04**: lazydocker installed for terminal-based container management (status, logs, start/stop)
+- [x] **DOCK-01**: Docker Engine installed via official install script (handles x86_64 and ARM64)
+- [x] **DOCK-02**: Docker Compose plugin installed and accessible as `docker compose`
+- [x] **DOCK-03**: Bootstrap user added to docker group (docker commands run without sudo)
+- [x] **DOCK-04**: lazydocker installed for terminal-based container management (status, logs, start/stop)
 
 ### Security
 
@@ -114,10 +114,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TOOL-05 | Phase 3 | Complete |
 | TOOL-06 | Phase 3 | Complete |
 | TOOL-07 | Phase 3 | Complete |
-| DOCK-01 | Phase 3 | Pending |
-| DOCK-02 | Phase 3 | Pending |
-| DOCK-03 | Phase 3 | Pending |
-| DOCK-04 | Phase 3 | Pending |
+| DOCK-01 | Phase 3 | Complete |
+| DOCK-02 | Phase 3 | Complete |
+| DOCK-03 | Phase 3 | Complete |
+| DOCK-04 | Phase 3 | Complete |
 | SEC-01 | Phase 4 | Pending |
 | SEC-02 | Phase 4 | Pending |
 | SEC-03 | Phase 4 | Pending |

@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-22)
 ## Current Position
 
 Phase: 3 of 4 (CLI Tools and Docker)
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-22 — Completed 03-02 (scripts/install-tools.sh with seven CLI tool installers)
+Last activity: 2026-02-22 — Completed 03-03 (scripts/install-docker.sh with four Docker functions)
 
-Progress: [████████░░] 58%
+Progress: [█████████░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 1.5 min
-- Total execution time: 0.15 hours
+- Total plans completed: 7
+- Average duration: 1.4 min
+- Total execution time: 0.16 hours
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [████████░░] 58%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 4 min | 1.3 min |
 | 02-shell-environment-and-config-deployment | 2 | 8 min | 4 min |
-| 03-cli-tools-and-docker | 2 | 2 min | 1 min |
+| 03-cli-tools-and-docker | 3 | 3 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (1 min), 02-01 (5 min), 02-02 (3 min), 03-01 (1 min), 03-02 (1 min)
+- Last 5 plans: 02-01 (5 min), 02-02 (3 min), 03-01 (1 min), 03-02 (1 min), 03-03 (1 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -43,6 +43,7 @@ Progress: [████████░░] 58%
 | Phase 02-shell P02 | 3 | 2 tasks | 2 files |
 | Phase 03-cli P01 | 1 | 2 tasks | 2 files |
 | Phase 03-cli P02 | 1 | 1 task | 1 file |
+| Phase 03-cli P03 | 1 | 1 task | 1 file |
 
 ## Accumulated Context
 
@@ -82,6 +83,10 @@ Recent decisions affecting current work:
 - [03-02]: _try_install soft-fail wrapper chosen — one tool download failure does not abort all remaining installs (bootstrap.sh has set -eEuo pipefail)
 - [03-02]: ripgrep/fd/bat/delta use separate libc case (musl for x86_64, gnu for arm64) — not in _arch_for_tool since libc varies per arch
 - [03-02]: delta URL uses no 'v' prefix: ${version} not v${version} — unique among seven tools
+- [03-03]: Docker Engine installed via official apt repo (download.docker.com/linux) — NOT get.docker.com (has hardcoded sleep 20 on re-run)
+- [03-03]: raspbian distro maps to debian Docker repo — download.docker.com/linux/raspbian has no binary-arm64/ directory
+- [03-03]: docker run hello-world NOT called in bootstrap — group membership requires re-login; newgrp creates subshell breaking set -eEuo pipefail
+- [03-03]: lazydocker flat archive: binary at root of tar.gz (no subdirectory), install -m 755 directly from tmpdir
 
 ### Pending Todos
 
@@ -97,5 +102,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 03-02-PLAN.md (scripts/install-tools.sh with seven CLI tool installers)
+Stopped at: Completed 03-03-PLAN.md (scripts/install-docker.sh with four Docker functions)
 Resume file: None

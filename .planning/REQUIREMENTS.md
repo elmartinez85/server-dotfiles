@@ -7,7 +7,7 @@
 
 ### Bootstrap
 
-- [ ] **BOOT-01**: User can bootstrap a fresh server with a single `curl | bash` command
+- [x] **BOOT-01**: User can bootstrap a fresh server with a single `curl | bash` command
 - [x] **BOOT-02**: Bootstrap script is idempotent — safe to re-run on an existing server without side effects
 - [x] **BOOT-03**: Bootstrap script detects OS architecture (x86_64 and ARM64) and installs appropriate binaries
 - [ ] **BOOT-04**: Repository enforces a pre-commit hook to prevent secrets from being committed
@@ -92,7 +92,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BOOT-01 | Phase 1 | Pending |
+| BOOT-01 | Phase 1 | Complete |
 | BOOT-02 | Phase 1 | Complete |
 | BOOT-03 | Phase 1 | Complete |
 | BOOT-04 | Phase 1 | Pending |

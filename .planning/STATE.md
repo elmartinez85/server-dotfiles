@@ -10,32 +10,33 @@ See: .planning/PROJECT.md (updated 2026-02-22)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-22 — Completed 01-02 (bootstrap.sh curl | bash entrypoint)
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-22 — Completed 01-03 (gitleaks secret prevention hooks and installer)
 
-Progress: [██░░░░░░░░] 17%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 2 min
-- Total execution time: 0.04 hours
+- Total plans completed: 3
+- Average duration: 1.3 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 2 | 3 min | 1.5 min |
+| 01-foundation | 3 | 4 min | 1.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (1 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 2 | 2 tasks | 6 files |
 | Phase 01-foundation P02 | 1 | 1 task | 1 file |
+| Phase 01-foundation P03 | 1 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -54,6 +55,10 @@ Recent decisions affecting current work:
 - [01-02]: trap cleanup EXIT (not ERR) — cleanup checks $? to distinguish success from failure
 - [01-02]: Manifest entry format is type:payload (file:, hook:, symlink:) — future phase scripts append lines in this format
 - [01-02]: _SUMMARY_INSTALLED/SKIPPED/WARNINGS are global bash arrays — phase scripts append to accumulate summary
+- [01-03]: gitleaks protect --staged --redact used (deprecated since v8.19.0 but functional in v8.30.0; pinned version controls surprises)
+- [01-03]: gitleaks git --source used for history scan (not deprecated gitleaks detect)
+- [01-03]: trap RETURN pattern used inside install_gitleaks() for tmpdir cleanup
+- [01-03]: diff -q used for hook idempotency — ensures outdated hooks get updated on re-run
 
 ### Pending Todos
 
@@ -69,5 +74,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 01-02-PLAN.md (bootstrap.sh curl | bash entrypoint)
+Stopped at: Completed 01-03-PLAN.md (gitleaks secret prevention hooks and installer)
 Resume file: None

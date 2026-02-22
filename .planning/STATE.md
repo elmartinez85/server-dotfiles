@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-22)
 ## Current Position
 
 Phase: 3 of 4 (CLI Tools and Docker)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-22 — Completed 03-01 (lib/versions.sh canonical version store + install-gitleaks.sh updated to source it)
+Last activity: 2026-02-22 — Completed 03-02 (scripts/install-tools.sh with seven CLI tool installers)
 
-Progress: [███████░░░] 52%
+Progress: [████████░░] 58%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 1.6 min
-- Total execution time: 0.13 hours
+- Total plans completed: 6
+- Average duration: 1.5 min
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [███████░░░] 52%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 4 min | 1.3 min |
 | 02-shell-environment-and-config-deployment | 2 | 8 min | 4 min |
-| 03-cli-tools-and-docker | 1 | 1 min | 1 min |
+| 03-cli-tools-and-docker | 2 | 2 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (1 min), 01-03 (1 min), 02-01 (5 min), 02-02 (3 min), 03-01 (1 min)
+- Last 5 plans: 01-03 (1 min), 02-01 (5 min), 02-02 (3 min), 03-01 (1 min), 03-02 (1 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -42,6 +42,7 @@ Progress: [███████░░░] 52%
 | Phase 02-shell P01 | 2 | 2 tasks | 4 files |
 | Phase 02-shell P02 | 3 | 2 tasks | 2 files |
 | Phase 03-cli P01 | 1 | 2 tasks | 2 files |
+| Phase 03-cli P02 | 1 | 1 task | 1 file |
 
 ## Accumulated Context
 
@@ -78,6 +79,9 @@ Recent decisions affecting current work:
 - [03-01]: lib/versions.sh variables NOT exported — sourcing scripts assign as globals/locals as needed (matches existing lib/ convention)
 - [03-01]: GITLEAKS_INSTALL_PATH kept as module-level var in install-gitleaks.sh — only GITLEAKS_VERSION was removed (path is not a version concern)
 - [03-01]: lib/versions.sh idempotency guard pattern (_LIB_VERSIONS_LOADED) matches lib/log.sh and lib/os.sh convention
+- [03-02]: _try_install soft-fail wrapper chosen — one tool download failure does not abort all remaining installs (bootstrap.sh has set -eEuo pipefail)
+- [03-02]: ripgrep/fd/bat/delta use separate libc case (musl for x86_64, gnu for arm64) — not in _arch_for_tool since libc varies per arch
+- [03-02]: delta URL uses no 'v' prefix: ${version} not v${version} — unique among seven tools
 
 ### Pending Todos
 
@@ -93,5 +97,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 03-01-PLAN.md (lib/versions.sh canonical version store + install-gitleaks.sh sourcing it)
+Stopped at: Completed 03-02-PLAN.md (scripts/install-tools.sh with seven CLI tool installers)
 Resume file: None

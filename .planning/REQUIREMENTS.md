@@ -31,13 +31,13 @@
 
 ### CLI Tools
 
-- [ ] **TOOL-01**: ripgrep installed and accessible as `rg`
-- [ ] **TOOL-02**: fd installed and accessible as `fd`
-- [ ] **TOOL-03**: fzf installed and accessible as `fzf`
-- [ ] **TOOL-04**: eza installed and accessible as `eza`
-- [ ] **TOOL-05**: bat installed and accessible as `bat`
-- [ ] **TOOL-06**: delta installed and accessible as `delta`
-- [ ] **TOOL-07**: neovim installed and accessible as `nvim`
+- [x] **TOOL-01**: ripgrep installed and accessible as `rg`
+- [x] **TOOL-02**: fd installed and accessible as `fd`
+- [x] **TOOL-03**: fzf installed and accessible as `fzf`
+- [x] **TOOL-04**: eza installed and accessible as `eza`
+- [x] **TOOL-05**: bat installed and accessible as `bat`
+- [x] **TOOL-06**: delta installed and accessible as `delta`
+- [x] **TOOL-07**: neovim installed and accessible as `nvim`
 
 ### Docker
 
@@ -107,13 +107,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONF-03 | Phase 2 | Complete |
 | CONF-04 | Phase 2 | Complete |
 | CONF-05 | Phase 2 | Complete |
-| TOOL-01 | Phase 3 | Pending |
-| TOOL-02 | Phase 3 | Pending |
-| TOOL-03 | Phase 3 | Pending |
-| TOOL-04 | Phase 3 | Pending |
-| TOOL-05 | Phase 3 | Pending |
-| TOOL-06 | Phase 3 | Pending |
-| TOOL-07 | Phase 3 | Pending |
+| TOOL-01 | Phase 3 | Complete |
+| TOOL-02 | Phase 3 | Complete |
+| TOOL-03 | Phase 3 | Complete |
+| TOOL-04 | Phase 3 | Complete |
+| TOOL-05 | Phase 3 | Complete |
+| TOOL-06 | Phase 3 | Complete |
+| TOOL-07 | Phase 3 | Complete |
 | DOCK-01 | Phase 3 | Pending |
 | DOCK-02 | Phase 3 | Pending |
 | DOCK-03 | Phase 3 | Pending |

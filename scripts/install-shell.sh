@@ -131,18 +131,19 @@ install_starship() {
 }
 
 # ── Function 4: install_tmux ───────────────────────────────────────────────────
-# Installs tmux via apt. pkg_install handles idempotency via dpkg-query.
+# Installs tmux via apt.
+# Idempotency: pkg_installed check BEFORE pkg_install determines correct summary bucket.
 install_tmux() {
   log_step "Installing tmux..."
-  pkg_install tmux
-  # pkg_install logs "already installed" if tmux is present; it logs success if
-  # it installs. We add to _SUMMARY_INSTALLED only if it wasn't already there.
+
   if pkg_installed tmux; then
-    # Check done by pkg_install — if it returned 0 after the dpkg-query skip,
-    # the item is already tracked in _SUMMARY_SKIPPED by pkg_install's log.
-    # We still add to our summary for the bootstrap summary printer.
-    _SUMMARY_INSTALLED+=("tmux")
+    log_info "tmux already installed — skipping"
+    _SUMMARY_SKIPPED+=("tmux")
+    return 0
   fi
+
+  pkg_install tmux
+  _SUMMARY_INSTALLED+=("tmux")
 }
 
 # ── Function 5: install_zsh_plugins ───────────────────────────────────────────

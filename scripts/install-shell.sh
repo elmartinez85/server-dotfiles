@@ -123,11 +123,11 @@ install_starship() {
     return 0
   fi
 
-  # arm64 Linux: musl build not available for aarch64 — use gnu instead
-  local platform_flag=""
-  [[ "$ARCH" == "arm64" ]] && platform_flag="--platform unknown-linux-gnu"
-  # shellcheck disable=SC2086
-  curl -fsSL https://starship.rs/install.sh | sh -s -- --yes ${platform_flag}
+  # Unset ARCH so starship's install script runs its own detect_arch.
+  # starship checks `[ -z "${ARCH-}" ]` and skips detection if ARCH is already
+  # set — our exported ARCH=arm64 would bypass the arm64→aarch64 mapping the
+  # script applies internally, causing a "builds not available" error.
+  curl -fsSL https://starship.rs/install.sh | env -u ARCH sh -s -- --yes
 
   log_success "starship installed at $(command -v starship)"
   echo "file:${install_path}" >> "$MANIFEST_FILE"

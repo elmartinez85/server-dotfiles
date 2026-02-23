@@ -8,6 +8,26 @@
 if [[ -n "${_SCRIPT_INSTALL_SHELL_LOADED:-}" ]]; then return 0; fi
 _SCRIPT_INSTALL_SHELL_LOADED=1
 
+# ── Helper: _already_installed ─────────────────────────────────────────────────
+# _already_installed <install_path> <label>
+#
+# Returns 0 (skip) if binary exists at install_path.
+# On skip: logs inline skip message and appends label to _SUMMARY_SKIPPED.
+# Returns 1 (proceed) if binary is absent.
+#
+# Use this helper for binary-download installers only.
+# apt-managed tools (zsh, tmux) use pkg_installed instead.
+_already_installed() {
+  local install_path="$1"
+  local label="$2"
+  if [[ -f "$install_path" ]]; then
+    log_info "${label} already installed — skipping"
+    _SUMMARY_SKIPPED+=("${label}")
+    return 0
+  fi
+  return 1
+}
+
 # ── Function 1: install_zsh ────────────────────────────────────────────────────
 # Installs zsh via apt and sets it as the default shell for the target user.
 # Target user: SUDO_USER (the real invoking user when bootstrap is run via sudo)
@@ -87,10 +107,16 @@ install_ohmyzsh() {
 
 # ── Function 3: install_starship ───────────────────────────────────────────────
 # Installs the starship prompt via the official install script.
-# The official starship installer IS idempotent — re-run overwrites the binary.
-# No directory pre-check needed (unlike oh-my-zsh).
+# Idempotency: binary presence at /usr/local/bin/starship is the skip guard.
+# Loose check only (no version comparison) — per CONTEXT.md locked decision.
 install_starship() {
-  log_step "Installing starship..."
+  local install_path="/usr/local/bin/starship"
+
+  log_step "Checking starship..."
+
+  if _already_installed "$install_path" "starship"; then
+    return 0
+  fi
 
   if [[ "${DRY_RUN:-false}" == "true" ]]; then
     log_info "[DRY RUN] Would install starship via official install script"
@@ -100,7 +126,7 @@ install_starship() {
   curl -fsSL https://starship.rs/install.sh | sh -s -- --yes
 
   log_success "starship installed at $(command -v starship)"
-  echo "file:/usr/local/bin/starship" >> "$MANIFEST_FILE"
+  echo "file:${install_path}" >> "$MANIFEST_FILE"
   _SUMMARY_INSTALLED+=("starship")
 }
 

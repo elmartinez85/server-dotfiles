@@ -92,7 +92,7 @@ scan_git_history() {
     return 0
   fi
 
-  if ! gitleaks git --source "$DOTFILES_DIR" --verbose; then
+  if ! gitleaks git "$DOTFILES_DIR"; then
     log_error "Secrets detected in git history. See gitleaks report above."
     log_error "Remove the secrets, rewrite history (git filter-repo or BFG), then re-run bootstrap."
     return 1

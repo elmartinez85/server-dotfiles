@@ -126,7 +126,7 @@ install_lazydocker() {
   local url="https://github.com/jesseduffield/lazydocker/releases/download/v${version}/lazydocker_${version}_Linux_${ARCH}.tar.gz"
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"

@@ -91,7 +91,7 @@ install_ripgrep() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -142,7 +142,7 @@ install_fd() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -191,7 +191,7 @@ install_fzf() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -241,7 +241,7 @@ install_eza() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -293,7 +293,7 @@ install_bat() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -346,7 +346,7 @@ install_delta() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"
@@ -396,7 +396,7 @@ install_nvim() {
 
   local tmpdir
   tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location --retry 3 --retry-delay 2 \
     "$url" | tar -xz -C "$tmpdir"

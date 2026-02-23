@@ -42,7 +42,7 @@ install_gitleaks() {
   local tmpdir
   tmpdir="$(mktemp -d)"
   # Clean up temp dir on function return regardless of outcome
-  trap 'rm -rf "$tmpdir"' RETURN
+  trap 'rm -rf "$tmpdir"; trap - RETURN' RETURN
 
   curl --fail --silent --show-error --location \
     --retry 3 --retry-delay 2 \

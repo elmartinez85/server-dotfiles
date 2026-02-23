@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-22)
 
 **Core value:** One command turns a bare Ubuntu/RPi server into a fully-configured, familiar environment — no manual steps.
-**Current focus:** Phase 3 - CLI Tools and Docker
+**Current focus:** Phase 3.1 - Shell Robustness Cleanup
 
 ## Current Position
 
-Phase: 3 of 4 (CLI Tools and Docker)
-Plan: 4 of 4 in current phase (phase complete)
-Status: Phase complete — ready for Phase 4
-Last activity: 2026-02-22 — Completed 03-04 (scripts/verify.sh + bootstrap.sh Phase 3 wiring)
+Phase: 3.1 of 4 (Shell Robustness Cleanup — gap closure)
+Plan: 1 of 1 in current phase (phase complete)
+Status: Phase 3.1 complete — ready for Phase 4
+Last activity: 2026-02-23 — Completed 03.1-01 (install-shell.sh idempotency fixes — starship + tmux)
 
-Progress: [██████████] 75%
+Progress: [██████████] 80%
 
 ## Performance Metrics
 
@@ -30,9 +30,10 @@ Progress: [██████████] 75%
 | 01-foundation | 3 | 4 min | 1.3 min |
 | 02-shell-environment-and-config-deployment | 2 | 8 min | 4 min |
 | 03-cli-tools-and-docker | 4 | 4 min | 1 min |
+| 03.1-shell-robustness-cleanup | 1 | 1 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (3 min), 03-01 (1 min), 03-02 (1 min), 03-03 (1 min), 03-04 (1 min)
+- Last 5 plans: 03-02 (1 min), 03-03 (1 min), 03-04 (1 min), 03.1-01 (1 min)
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -45,6 +46,7 @@ Progress: [██████████] 75%
 | Phase 03-cli P02 | 1 | 1 task | 1 file |
 | Phase 03-cli P03 | 1 | 1 task | 1 file |
 | Phase 03-cli P04 | 1 | 2 tasks | 2 files |
+| Phase 03.1-robustness P01 | 1 | 2 tasks | 1 file |
 
 ## Accumulated Context
 
@@ -93,6 +95,10 @@ Recent decisions affecting current work:
 - [03-04]: install_docker_engine called without _try_install (hard-fail) — Docker Engine is core infrastructure
 - [03-04]: install_lazydocker wrapped in _try_install (soft-fail) — convenience TUI tool, not core infrastructure
 - [03-04]: verify.sh accumulates PASS/FAIL counts (not exit-on-first-failure) — operators see all results in one pass
+- [03.1-01]: _already_installed uses [[ -f ]] not [[ -x ]] — binary presence check per locked decision
+- [03.1-01]: _already_installed placed in install-shell.sh (not lib/) — install-script-internal, not a reusable library primitive
+- [03.1-01]: DRY_RUN check in install_starship() placed AFTER already-installed check — consistent with install_ohmyzsh pattern
+- [03.1-01]: install_tmux() uses pkg_installed (not _already_installed) — apt-managed tool, not a binary download
 
 ### Pending Todos
 
@@ -107,6 +113,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-22
-Stopped at: Completed 03-04-PLAN.md (scripts/verify.sh + bootstrap.sh Phase 3 wiring — Phase 3 complete)
+Last session: 2026-02-23
+Stopped at: Completed 03.1-01-PLAN.md (scripts/install-shell.sh idempotency fixes — Phase 3.1 complete)
 Resume file: None

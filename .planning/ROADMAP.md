@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Repo skeleton, bootstrap entrypoint, shared lib functions, and secret prevention (completed 2026-02-22)
 - [x] **Phase 2: Shell Environment and Config Deployment** - zsh, oh-my-zsh, starship, tmux, plugins, and symlinked configs (completed 2026-02-22)
 - [x] **Phase 3: CLI Tools and Docker** - Modern CLI tools from GitHub Releases and Docker Engine with Compose (completed 2026-02-22)
-- [ ] **Phase 3.1: Shell Installer Robustness** - Idempotency fix for starship installer; summary tracking fix for tmux; MAINT-01 traceability correction (INSERTED — gap closure from v1.0 audit)
+- [x] **Phase 3.1: Shell Installer Robustness** - Idempotency fix for starship installer; summary tracking fix for tmux; MAINT-01 traceability correction (INSERTED — gap closure from v1.0 audit) (completed 2026-02-23)
 - [ ] **Phase 4: Security and Maintenance** - SSH hardening, fail2ban, UFW firewall, and automated version updates
 
 ## Phase Details
@@ -105,5 +105,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
 | 1. Foundation | 3/3 | Complete   | 2026-02-22 |
 | 2. Shell Environment and Config Deployment | 2/2 | Complete   | 2026-02-22 |
 | 3. CLI Tools and Docker | 4/4 | Complete   | 2026-02-22 |
-| 3.1. Shell Installer Robustness | 0/1 | Not started | - |
+| 3.1. Shell Installer Robustness | 1/1 | Complete   | 2026-02-23 |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

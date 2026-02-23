@@ -123,7 +123,11 @@ install_starship() {
     return 0
   fi
 
-  curl -fsSL https://starship.rs/install.sh | sh -s -- --yes
+  # arm64 Linux: musl build not available for aarch64 — use gnu instead
+  local platform_flag=""
+  [[ "$ARCH" == "arm64" ]] && platform_flag="--platform unknown-linux-gnu"
+  # shellcheck disable=SC2086
+  curl -fsSL https://starship.rs/install.sh | sh -s -- --yes ${platform_flag}
 
   log_success "starship installed at $(command -v starship)"
   echo "file:${install_path}" >> "$MANIFEST_FILE"

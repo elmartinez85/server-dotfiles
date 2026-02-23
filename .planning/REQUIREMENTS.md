@@ -124,7 +124,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEC-04 | Phase 4 | Pending |
 | SEC-05 | Phase 4 | Pending |
 | SEC-06 | Phase 4 | Pending |
-| MAINT-01 | Phase 4 | Complete |
+| MAINT-01 | Phase 3 | Complete |
 | MAINT-02 | Phase 4 | Pending |
 
 **Coverage:**
@@ -134,4 +134,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-22*
-*Last updated: 2026-02-22 after roadmap creation*
+*Last updated: 2026-02-22 after v1.0 audit — MAINT-01 corrected to Phase 3, Phase 3.1 gap closure added*

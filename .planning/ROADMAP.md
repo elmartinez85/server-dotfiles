@@ -15,6 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Repo skeleton, bootstrap entrypoint, shared lib functions, and secret prevention (completed 2026-02-22)
 - [x] **Phase 2: Shell Environment and Config Deployment** - zsh, oh-my-zsh, starship, tmux, plugins, and symlinked configs (completed 2026-02-22)
 - [x] **Phase 3: CLI Tools and Docker** - Modern CLI tools from GitHub Releases and Docker Engine with Compose (completed 2026-02-22)
+- [ ] **Phase 3.1: Shell Installer Robustness** - Idempotency fix for starship installer; summary tracking fix for tmux; MAINT-01 traceability correction (INSERTED — gap closure from v1.0 audit)
 - [ ] **Phase 4: Security and Maintenance** - SSH hardening, fail2ban, UFW firewall, and automated version updates
 
 ## Phase Details
@@ -68,6 +69,17 @@ Plans:
 - [ ] 03-03-PLAN.md — scripts/install-docker.sh (Docker Engine + Compose + lazydocker)
 - [ ] 03-04-PLAN.md — scripts/verify.sh (operator post-relogin checks) + bootstrap.sh Phase 3 wiring
 
+### Phase 3.1: Shell Installer Robustness
+**Goal**: `install_starship()` skips re-download when the correct version is already installed, `install_tmux()` correctly reports "skipped" on idempotent re-runs, and MAINT-01 traceability correctly points to Phase 3
+**Depends on**: Phase 3
+**Gap Closure**: Closes tech debt items from v1.0 milestone audit
+**Requirements**: BOOT-02, SHELL-03, SHELL-04 (robustness improvements — requirements already satisfied, this improves idempotency correctness)
+**Success Criteria** (what must be TRUE):
+  1. Running bootstrap.sh a second time does NOT re-download starship — it logs "already installed — skipping"
+  2. Running bootstrap.sh a second time shows tmux under "Skipped" in the summary (not "Installed")
+  3. REQUIREMENTS.md traceability table shows MAINT-01 assigned to Phase 3 (not Phase 4)
+**Plans**: 1 plan
+
 ### Phase 4: Security and Maintenance
 **Goal**: The server rejects all SSH password authentication attempts and brute-force attacks, the firewall enforces default-deny inbound policy, and pinned tool versions are tracked in a single file with automated update PRs
 **Depends on**: Phase 3
@@ -83,11 +95,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-22 |
 | 2. Shell Environment and Config Deployment | 2/2 | Complete   | 2026-02-22 |
 | 3. CLI Tools and Docker | 4/4 | Complete   | 2026-02-22 |
+| 3.1. Shell Installer Robustness | 0/TBD | Not started | - |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

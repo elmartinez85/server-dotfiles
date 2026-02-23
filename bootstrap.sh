@@ -4,7 +4,7 @@
 set -eEuo pipefail
 
 # ── Constants ────────────────────────────────────────────────────────────────
-DOTFILES_REPO="https://github.com/<YOUR_GITHUB_USER>/server-dotfiles.git"
+DOTFILES_REPO="https://github.com/elmartinez85/server-dotfiles.git"
 DOTFILES_DIR="${HOME}/.dotfiles"
 LOG_FILE="${DOTFILES_DIR}/bootstrap.log"
 MANIFEST_FILE="${DOTFILES_DIR}/.installed"

@@ -2,26 +2,25 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-02-22)
+See: .planning/PROJECT.md (updated 2026-02-23)
 
 **Core value:** One command turns a bare Ubuntu/RPi server into a fully-configured, familiar environment — no manual steps.
-**Current focus:** Phase 3.1 - Shell Robustness Cleanup
+**Current focus:** v1.1 — Phase 4: Security and Maintenance
 
 ## Current Position
 
-Phase: 3.1 of 4 (Shell Robustness Cleanup — gap closure)
-Plan: 1 of 1 in current phase (phase complete)
-Status: Phase 3.1 complete — ready for Phase 4
-Last activity: 2026-02-23 — Completed 03.1-01 (install-shell.sh idempotency fixes — starship + tmux)
+Phase: 4 of 4 (Security and Maintenance — not yet started)
+Status: v1.0 milestone complete — ready to plan Phase 4
+Last activity: 2026-02-23 — Completed v1.0 milestone (archived Phases 1–3.1)
 
-Progress: [██████████] 80%
+Progress: [████████░░] v1.0 shipped, v1.1 planned
 
 ## Performance Metrics
 
-**Velocity:**
-- Total plans completed: 8
-- Average duration: 1.4 min
-- Total execution time: 0.17 hours
+**v1.0 Velocity:**
+- Total plans completed: 10
+- Phases: 4 (Phases 1, 2, 3, 3.1)
+- Timeline: 2026-02-22 → 2026-02-23
 
 **By Phase:**
 
@@ -32,87 +31,24 @@ Progress: [██████████] 80%
 | 03-cli-tools-and-docker | 4 | 4 min | 1 min |
 | 03.1-shell-robustness-cleanup | 1 | 1 min | 1 min |
 
-**Recent Trend:**
-- Last 5 plans: 03-02 (1 min), 03-03 (1 min), 03-04 (1 min), 03.1-01 (1 min)
-- Trend: establishing baseline
-
-*Updated after each plan completion*
-| Phase 01-foundation P01 | 2 | 2 tasks | 6 files |
-| Phase 01-foundation P02 | 1 | 1 task | 1 file |
-| Phase 01-foundation P03 | 1 | 2 tasks | 2 files |
-| Phase 02-shell P01 | 2 | 2 tasks | 4 files |
-| Phase 02-shell P02 | 3 | 2 tasks | 2 files |
-| Phase 03-cli P01 | 1 | 2 tasks | 2 files |
-| Phase 03-cli P02 | 1 | 1 task | 1 file |
-| Phase 03-cli P03 | 1 | 1 task | 1 file |
-| Phase 03-cli P04 | 1 | 2 tasks | 2 files |
-| Phase 03.1-robustness P01 | 1 | 2 tasks | 1 file |
-
 ## Accumulated Context
 
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- [Setup]: Pure bash + GNU Stow chosen over chezmoi/Ansible — zero bootstrapping dependency, simpler for single-user homelab
-- [Setup]: apt + direct GitHub Releases binary downloads chosen over Homebrew — inconsistent ARM support on RPi
-- [Setup]: Secrets via env vars at runtime only — public repo, zero secrets in version control
-- [01-01]: tee redirection belongs in bootstrap.sh entrypoint, not in log.sh — lib files only define functions
-- [01-01]: os_detect_arch normalizes both aarch64 (Linux) and arm64 (macOS) to canonical arm64 output
-- [01-01]: DRY_RUN support added to pkg_install via exported env var — no flag parsing in lib files
-- [01-02]: DOTFILES_REPO uses <YOUR_GITHUB_USER> placeholder — user must replace before publishing
-- [01-02]: trap cleanup EXIT (not ERR) — cleanup checks $? to distinguish success from failure
-- [01-02]: Manifest entry format is type:payload (file:, hook:, symlink:) — future phase scripts append lines in this format
-- [01-02]: _SUMMARY_INSTALLED/SKIPPED/WARNINGS are global bash arrays — phase scripts append to accumulate summary
-- [01-03]: gitleaks protect --staged --redact used (deprecated since v8.19.0 but functional in v8.30.0; pinned version controls surprises)
-- [01-03]: gitleaks git --source used for history scan (not deprecated gitleaks detect)
-- [01-03]: trap RETURN pattern used inside install_gitleaks() for tmpdir cleanup
-- [01-03]: diff -q used for hook idempotency — ensures outdated hooks get updated on re-run
-- [02-01]: ZSH_THEME must be empty string — named theme causes dual-prompt conflict with starship
-- [02-01]: eval "$(starship init zsh)" must be the last executable line — oh-my-zsh resets $PROMPT if placed before source oh-my-zsh.sh
-- [02-01]: Double quotes required around $(starship init zsh) since starship v1.17.0
-- [02-01]: ssh_only = false in starship.toml — always show hostname on servers, not just over SSH
-- [02-01]: .zsh_aliases references Phase 3 binaries (eza, bat, rg) — safe, zsh resolves at invocation time not source time
-- [02-01]: Plain "git:" text used for git_branch symbol — no Nerd Font required on headless servers
-- [02-02]: oh-my-zsh install uses directory pre-check guard (! -d ~/.oh-my-zsh) — official installer exits 1 if dir exists; locked decision to re-run is incorrect
-- [02-02]: usermod -s used for shell change (not chsh) — chsh has PAM issues on RPi OS Bookworm when run from root scripts
-- [02-02]: KEEP_ZSHRC=yes passed to oh-my-zsh installer — prevents installer from overwriting .zshrc before deploy_dotfiles creates the symlink
-- [02-02]: install order is zsh -> oh-my-zsh -> plugins -> starship -> tmux -> deploy_dotfiles — oh-my-zsh must precede plugin clones
-- [02-02]: starship.toml symlink target is ~/.config/starship.toml — mkdir -p ~/.config required on minimal servers
-- [03-01]: lib/versions.sh variables NOT exported — sourcing scripts assign as globals/locals as needed (matches existing lib/ convention)
-- [03-01]: GITLEAKS_INSTALL_PATH kept as module-level var in install-gitleaks.sh — only GITLEAKS_VERSION was removed (path is not a version concern)
-- [03-01]: lib/versions.sh idempotency guard pattern (_LIB_VERSIONS_LOADED) matches lib/log.sh and lib/os.sh convention
-- [03-02]: _try_install soft-fail wrapper chosen — one tool download failure does not abort all remaining installs (bootstrap.sh has set -eEuo pipefail)
-- [03-02]: ripgrep/fd/bat/delta use separate libc case (musl for x86_64, gnu for arm64) — not in _arch_for_tool since libc varies per arch
-- [03-02]: delta URL uses no 'v' prefix: ${version} not v${version} — unique among seven tools
-- [03-03]: Docker Engine installed via official apt repo (download.docker.com/linux) — NOT get.docker.com (has hardcoded sleep 20 on re-run)
-- [03-03]: raspbian distro maps to debian Docker repo — download.docker.com/linux/raspbian has no binary-arm64/ directory
-- [03-03]: docker run hello-world NOT called in bootstrap — group membership requires re-login; newgrp creates subshell breaking set -eEuo pipefail
-- [03-03]: lazydocker flat archive: binary at root of tar.gz (no subdirectory), install -m 755 directly from tmpdir
-- [03-04]: verify.sh sources lib/versions.sh (not hardcoded) — stays in sync when versions are updated
-- [03-04]: verify.sh uses BASH_SOURCE[0]-relative SCRIPT_DIR detection — works from any working directory after re-login
-- [03-04]: install_docker_engine called without _try_install (hard-fail) — Docker Engine is core infrastructure
-- [03-04]: install_lazydocker wrapped in _try_install (soft-fail) — convenience TUI tool, not core infrastructure
-- [03-04]: verify.sh accumulates PASS/FAIL counts (not exit-on-first-failure) — operators see all results in one pass
-- [03.1-01]: _already_installed uses [[ -f ]] not [[ -x ]] — binary presence check per locked decision
-- [03.1-01]: _already_installed placed in install-shell.sh (not lib/) — install-script-internal, not a reusable library primitive
-- [03.1-01]: DRY_RUN check in install_starship() placed AFTER already-installed check — consistent with install_ohmyzsh pattern
-- [03.1-01]: install_tmux() uses pkg_installed (not _already_installed) — apt-managed tool, not a binary download
+All v1.0 decisions recorded in PROJECT.md.
 
 ### Pending Todos
 
-None yet.
+- Replace `<YOUR_GITHUB_USER>` placeholder in bootstrap.sh:7 before publishing to GitHub
 
 ### Blockers/Concerns
 
-- [Phase 3]: delta 0.18.2 aarch64-unknown-linux-gnu.tar.gz confirmed present on GitHub Releases (low risk for Bookworm glibc 2.35+)
-- [Phase 3 RESOLVED]: Neovim ARM64 install method confirmed — use tarball (nvim-linux-arm64.tar.gz), not AppImage (avoids FUSE dependency)
 - [Phase 4]: Confirm sshd service name on RPi OS Bookworm — may be `ssh` not `sshd`
 - [Phase 4]: Verify UFW sequence on Ubuntu 24.04 fresh install
 
 ## Session Continuity
 
 Last session: 2026-02-23
-Stopped at: Completed 03.1-01-PLAN.md (scripts/install-shell.sh idempotency fixes — Phase 3.1 complete)
+Stopped at: Completed v1.0 milestone archival
 Resume file: None

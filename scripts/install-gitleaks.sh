@@ -30,7 +30,13 @@ install_gitleaks() {
     return 0
   fi
 
-  local url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_${ARCH}.tar.gz"
+  # gitleaks uses x64/arm64 naming (not x86_64)
+  local gl_arch
+  case "$ARCH" in
+    x86_64) gl_arch="x64" ;;
+    *)      gl_arch="$ARCH" ;;
+  esac
+  local url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_${gl_arch}.tar.gz"
   log_step "Downloading gitleaks ${GITLEAKS_VERSION} for linux/${ARCH}..."
 
   local tmpdir

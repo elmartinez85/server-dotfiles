@@ -80,6 +80,9 @@ Plans:
   3. REQUIREMENTS.md traceability table shows MAINT-01 assigned to Phase 3 (not Phase 4)
 **Plans**: 1 plan
 
+Plans:
+- [ ] 03.1-01-PLAN.md — _already_installed helper + idempotency fixes for install_starship() and install_tmux() + MAINT-01 traceability verify
+
 ### Phase 4: Security and Maintenance
 **Goal**: The server rejects all SSH password authentication attempts and brute-force attacks, the firewall enforces default-deny inbound policy, and pinned tool versions are tracked in a single file with automated update PRs
 **Depends on**: Phase 3
@@ -102,5 +105,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
 | 1. Foundation | 3/3 | Complete   | 2026-02-22 |
 | 2. Shell Environment and Config Deployment | 2/2 | Complete   | 2026-02-22 |
 | 3. CLI Tools and Docker | 4/4 | Complete   | 2026-02-22 |
-| 3.1. Shell Installer Robustness | 0/TBD | Not started | - |
+| 3.1. Shell Installer Robustness | 0/1 | Not started | - |
 | 4. Security and Maintenance | 0/TBD | Not started | - |

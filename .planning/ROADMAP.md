@@ -21,7 +21,21 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 
 ### 🚧 v1.1 Security and Maintenance (Planned)
 
+- [ ] **Phase 3.2: Multi-User and RPi Compatibility** — Fix shell setup targeting root home instead of SUDO_USER home; all Phase 2 installs (oh-my-zsh, plugins, dotfiles) must target the actual login user (INSERTED — live deployment gap)
 - [ ] **Phase 4: Security and Maintenance** — SSH hardening, fail2ban, UFW firewall, and automated version updates
+
+#### Phase 3.2: Multi-User and RPi Compatibility (INSERTED)
+**Goal**: The shell environment (oh-my-zsh, plugins, dotfiles symlinks) is deployed to the actual login user's home directory, not root's — so logging in as `pi` or any non-root `SUDO_USER` gets a working zsh with `.zshrc`, prompt, and plugins
+**Depends on**: Phase 3.1
+**Gap Closure**: Closes live deployment gap — bootstrap runs as root (`$HOME=/root`) but Phase 2 installs target `$HOME`; non-root users get no shell config after bootstrap
+**Requirements**: SHELL-01, SHELL-02, SHELL-03, SHELL-04, SHELL-05, SHELL-06, CONF-01, CONF-02, CONF-03, CONF-04, CONF-05 (correctness fix — requirements were marked satisfied but broke under sudo invocation)
+**Success Criteria** (what must be TRUE):
+  1. After `curl | bash` run as root on a RPi with user `pi`, logging in as `pi` opens zsh with oh-my-zsh, starship prompt, and plugins active
+  2. `~/.zshrc`, `~/.zsh_aliases`, `~/.tmux.conf`, and `~/.config/starship.toml` exist as correct symlinks in the target user's home (not in `/root`)
+  3. Oh-my-zsh directory and plugin directories exist in the target user's home
+  4. Re-running bootstrap as root is idempotent — no duplicate installs, no broken symlinks
+  5. Bootstrap run directly as root (no SUDO_USER) continues to work — root's home is the target
+**Plans**: TBD
 
 #### Phase 4: Security and Maintenance
 **Goal**: The server rejects all SSH password authentication attempts and brute-force attacks, the firewall enforces default-deny inbound policy, and pinned tool versions are tracked in a single file with automated update PRs
@@ -43,4 +57,5 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 | 2. Shell Environment and Config Deployment | v1.0 | 2/2 | Complete | 2026-02-22 |
 | 3. CLI Tools and Docker | v1.0 | 4/4 | Complete | 2026-02-22 |
 | 3.1. Shell Installer Robustness | v1.0 | 1/1 | Complete | 2026-02-23 |
+| 3.2. Multi-User and RPi Compatibility | v1.1 | 0/TBD | Not started | — |
 | 4. Security and Maintenance | v1.1 | 0/TBD | Not started | — |
